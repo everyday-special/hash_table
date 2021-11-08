@@ -14,7 +14,7 @@ Table::Table()
 	arraySize = new int(101);
 	table = new LinkedList*[*arraySize];
 	for (int i = 0; i < *arraySize; i++)
-		table[i] = new LinkedList();
+		table[i] = nullptr;
 	currSize = new int(0);
 }
 
@@ -56,6 +56,8 @@ int Table::hash(const char topic[])
 void Table::insert(Website & newWebsite)
 {
 	int h = hash(newWebsite.topic);
+	if (!(table[h]))
+		table[h] = new LinkedList();
 	table[h]->add(newWebsite);
 }
 
