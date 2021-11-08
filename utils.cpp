@@ -27,6 +27,23 @@ int getInt()
 	return integer;
 }
 
+
+
+char getChar()
+/* Purpose: Read and return a character from user input
+ * Parameters: None
+ * Return: char character
+ */
+{
+	char reply;
+
+	std::cin >> reply;
+	std::cin.ignore(MAX_SIZE, '\n');
+	return reply;
+}
+
+
+
 void getString(char str[])
 {
 /*

@@ -16,4 +16,5 @@
 const int MAX_SIZE = 100; // Maximum size of statically allocated tempory character arrays
 
 int getInt();
+char getChar();
 void getString(char str[]);

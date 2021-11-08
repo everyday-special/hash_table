@@ -33,7 +33,7 @@ LinkedList::~LinkedList()
 
 
 
-void LinkedList::add(Website newWebsite)
+void LinkedList::add(Website & newWebsite)
 {
 	Node * newNode = new Node(newWebsite);
 	if (head)
@@ -68,7 +68,7 @@ bool LinkedList::displayAll()
 
 
 
-void LinkedList::displayAllRecursive(Node * curr)
+void LinkedList::displayAllRecursive(Node *& curr)
 {
 	if (curr)
 	{
@@ -79,7 +79,7 @@ void LinkedList::displayAllRecursive(Node * curr)
 
 
 
-int LinkedList::removeByRating(const int rating)
+int LinkedList::removeByRating(const int& rating)
 {
 	int original = *size;
 	Node * curr = head;
@@ -128,7 +128,7 @@ bool LinkedList::displayAllByTopic(const char query[])
 
 
 
-void LinkedList::displayAllByTopicRecursive(Node * curr, const char query[])
+void LinkedList::displayAllByTopicRecursive(Node *& curr, const char query[])
 {
 	if (curr)
 	{
@@ -159,7 +159,7 @@ bool LinkedList::retrieve(const char query[], Website matches[], int & num_found
 
 
 
-bool LinkedList::edit(const char query[], const char newReview[], const int newRating)
+bool LinkedList::edit(const char query[], const char newReview[], const int& newRating)
 {
 	Node * curr = head;
 

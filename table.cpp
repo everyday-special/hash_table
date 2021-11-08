@@ -121,7 +121,7 @@ bool Table::display()
 	for (int i = 0; i < *arraySize; i++)
 	{
 		if (table[i])
-			found = (found || table[i]->displayAll());
+			found = (table[i]->displayAll() || found);
 	}
 	return found;
 }

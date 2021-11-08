@@ -1,12 +1,14 @@
-#include "table.h"
+/* Purpose: Definition of main()
+ * Matthew Lidell
+ * CS260 Project 3
+ * 11/7/21
+ * file: main.cpp
+ */
+#include "main.h"
 
-int main()
+int main(int argc, char ** argv, char ** envp)
 {
-	Website website1("News", "www.npr.com", "National Public Radio homepage", "reliable news source", 5);
-        Website website2("Social Media", "www.reddit.com", "Homepage of the internet", "fun way to kill time", 4);
-	Table table;
-	table.insert(website1);
-	table.insert(website2);
-	table.display();
+	Menu menu;
+	menu.run();
 	return 0;
 }

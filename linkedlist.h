@@ -15,13 +15,13 @@ class LinkedList
 	public:
 		LinkedList();
 		~LinkedList();
-		void add(Website newWebsite);
-		int removeByRating(const int rating);
+		void add(Website & newWebsite);
+		int removeByRating(const int & rating);
 		int getSize();
 		bool displayAll();
 		bool retrieve(const char query[], Website matches[], int & num_found);
 		bool displayAllByTopic(const char query[]);
-		bool edit(const char query[], const char newReivew[], const int newRating);
+		bool edit(const char query[], const char newReivew[], const int & newRating);
 	
 	private:
 		struct Node
@@ -47,6 +47,6 @@ class LinkedList
 		};
 		Node * head;
 		int * size;
-		void displayAllRecursive(Node * curr);
-		void displayAllByTopicRecursive(Node * curr, const char query[]);
+		void displayAllRecursive(Node *& curr);
+		void displayAllByTopicRecursive(Node *& curr, const char query[]);
 };
