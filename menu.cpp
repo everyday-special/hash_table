@@ -52,7 +52,8 @@ void Menu::printMenu()
 	std::cout << "d) Retrieve all websites of a specific topic." << std::endl;
 	std::cout << "e) Edit a specific website." << std::endl;
 	std::cout << "f) Remove all websites with a rating of 1." << std::endl;
-	std::cout << "g) View the chain lengths of the table." << std::endl;
+	std::cout << "g) View last retrieved results." << std::endl;
+	std::cout << "h) View the chain lengths of the table." << std::endl;
 	std::cout << "q) Quit." << std::endl;
 }
 
@@ -89,12 +90,12 @@ void Menu::doCommand(const char reply)
 		case 'f':
 			retrieve();
 			break;
-		case 'h':
-			viewChainLengths();
-			break;
 		case 'g':
 			viewRetrievedResults();
 			break;
+		case 'h':
+                        viewChainLengths();
+                        break;
 		case 'q':
 			std::cout << "Exiting menu..." << std::endl;
 			break;
