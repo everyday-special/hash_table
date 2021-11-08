@@ -1,0 +1,53 @@
+#include "website.h"
+#include "linkedlist.h"
+#include <iostream>
+
+int main()
+{
+	Website matches [MAX_SIZE];
+	int returns = 0;
+	LinkedList list;
+	Website website1("News", "www.npr.com", "National Public Radio homepage", "reliable news source", 5);
+	Website website2("Social Media", "www.reddit.com", "Homepage of the internet", "fun way to kill time", 4);
+	std::cout << "~~~~~NONE~~~~~" << std::endl;
+	std::cout << "size: " << list.getSize() << std::endl;
+	list.displayAll();
+	list.displayAllByTopic("News");
+	list.add(website1);
+	list.add(website2);
+	std::cout << "~~~~~ALL~~~~~" << std::endl;
+	list.displayAll();
+	std::cout << "~~~~~NEWS~~~~~" << std::endl;
+	list.displayAllByTopic("News");
+	std::cout << "~~~~~SOCIAL MEDIA~~~~~" << std::endl;
+	list.displayAllByTopic("Social Media");
+	std::cout << "~~~~~DUMMY~~~~~" << std::endl;
+	list.displayAllByTopic("Dummy");
+	std::cout << "~~~~~REMOVE 4~~~~~" << std::endl;
+	list.removeByRating(4);
+	std::cout << "size: " << list.getSize() << std::endl;
+	list.displayAll();
+	list.displayAllByTopic("Social Media");
+	list.displayAllByTopic("News");
+	list.add(website1);
+	list.add(website2);
+	std::cout << "~~~~~~~~~~~~" << std::endl;
+	list.displayAll();
+	list.displayAllByTopic("News");
+	std::cout << list.getSize() << std::endl;
+	list.removeByRating(4);
+	std::cout << list.getSize() << std::endl;
+	list.add(website2);
+	std::cout << "~~~~~Retrieve~~~~~" << std::endl;
+	if (list.retrieve("Social Medi", matches, returns))
+	{
+		std::cout << returns << std::endl;
+		for (int i = 0; i < returns; i++)
+			std::cout << matches[i] << std::endl;
+	}
+	std::cout << "~~~~~~~~Setters~~~~~~~~~" << std::endl;
+	website1.setReview("What happend to you, you've changed!");
+	website1.setRating(420);
+	std::cout << website1 << std::endl;
+	return 0;
+}
