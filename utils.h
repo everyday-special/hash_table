@@ -14,6 +14,7 @@
  */
 
 const int MAX_SIZE = 100; // Maximum size of statically allocated tempory character arrays
+const char FILENAME[] = "websites.txt"; // File to save and load data from
 
 int getInt();
 char getChar();

@@ -8,16 +8,32 @@
 
 
 Menu::Menu()
+/* Purpose: Default constructor for menu. Initializes attributes and loads data from file.
+ * Parameters: None
+ * Return: None
+ */
 {
-	table = new Table();
+	table = new Table(); // Instantiate table object
 	results = new Website[MAX_SIZE];
 	results_size = new int(0);
+	if (table->loadFromFile(FILENAME))
+		std::cout << "Loaded websites from '" << FILENAME << "'." << std::endl;
+	else
+		std::cout << "Error loading data from '" << FILENAME << "'. No data was loaded." << std::endl;
 }
 
 
 
 Menu::~Menu()
+/* Purpose: Default destructor for menu. Saves data to file and then deletes allocated memory.
+ * Parameters: None
+ * Return: None
+ */
 {
+	if (table->saveToFile(FILENAME))
+		std::cout << "Website data saved to '" << FILENAME << "'." << std::endl;
+	else
+		std::cout << "Error sacing data to '" << FILENAME << "'. No data was saved." << std::endl;
 	delete table;
 	table = nullptr;
 	delete results_size;
@@ -29,6 +45,10 @@ Menu::~Menu()
 
 
 void Menu::run()
+/* Purpose: Runs the main menu loop
+ * Parameters: None
+ * Return: None
+ */
 {
 	char reply; // Used to store user input
 
@@ -44,14 +64,18 @@ void Menu::run()
 
 
 void Menu::printMenu()
+/* Purpose: Prints the menu options
+ * Parameters: None
+ * Return None
+ */
 {
 	std::cout << "\nMenu Options:" << std::endl;
 	std::cout << "a) Display all websites in the table." << std::endl;
 	std::cout << "b) Display all websites of a specific topic." << std::endl;
 	std::cout << "c) Insert a new website into the table." << std::endl;
-	std::cout << "d) Retrieve all websites of a specific topic." << std::endl;
+	std::cout << "d) Remove all websites with a rating of 1." << std::endl;
 	std::cout << "e) Edit a specific website." << std::endl;
-	std::cout << "f) Remove all websites with a rating of 1." << std::endl;
+	std::cout << "f) Retrieve all websites of a specific topic." << std::endl;
 	std::cout << "g) View last retrieved results." << std::endl;
 	std::cout << "h) View the chain lengths of the table." << std::endl;
 	std::cout << "q) Quit." << std::endl;
@@ -60,6 +84,10 @@ void Menu::printMenu()
 
 
 const char Menu::getReply()
+/* Pupose: Gets character input representing menu selection from user
+ * Parameters: None
+ * Return: None
+ */
 {
 	std::cout << "Please make a selection from the options shown above: " << std::endl;
 	return getChar();
@@ -68,6 +96,10 @@ const char Menu::getReply()
 
 
 void Menu::doCommand(const char reply)
+/* Purpose: Performs command based on the user input
+ * Parameter: const char reply - char representing user menu selection
+ * Return: None
+ */
 {
 	std::cout << std::endl;
 	switch (reply)
@@ -107,6 +139,10 @@ void Menu::doCommand(const char reply)
 
 
 const Website Menu::getWebsite()
+/* Purpose: Gets website data from user, creates that website and returns it
+ * Parameters: None
+ * Return: const Website - website created from user input
+ */
 {
 	char newTopic[MAX_SIZE];
 	char newAddress[MAX_SIZE];
@@ -135,6 +171,10 @@ const Website Menu::getWebsite()
 
 
 void Menu::insert()
+/* Purpose: Inserts a new user created website
+ * Parameters: None
+ * Return: None
+ */
 {
 	Website newWebsite = getWebsite();
 
@@ -144,6 +184,10 @@ void Menu::insert()
 
 
 void Menu::displayAll()
+/* Purpose: Displays all the data in the hash table
+ * Parameters: None
+ * Return: None
+ */
 {
 	bool ret = table->display();
 	if (!ret)
@@ -153,6 +197,10 @@ void Menu::displayAll()
 
 
 void Menu::displayTopic()
+/* Purpose: Displays all the data with a topic that matches the topic specified by the user
+ * Parameters: None
+ * Return: None
+ */
 {
 	char query[MAX_SIZE];
 	bool ret;
@@ -167,6 +215,10 @@ void Menu::displayTopic()
 
 
 void Menu::retrieve()
+/* Purpose: Retrieves a list of all websites matching a user specific topic. Stores these results in this->results
+ * Parameters: None
+ * Return: None
+ */
 {
 	char query[MAX_SIZE];
 	bool ret;
@@ -184,15 +236,26 @@ void Menu::retrieve()
 
 
 void Menu::viewRetrievedResults()
+/* Purpose: Views the websites that were previously retrieved and stored in this->results
+ * Parameters: None
+ * Return: None
+ */
 {
 	std::cout << "\nViewing previously retrieved results:" << std::endl;
-	for (int i = 0; i < *results_size; i++)
-		std::cout << i <<")'\n'" << results[i] << std::endl;
+	if (*results_size == 0)
+		std::cout << "No Websites have been retrieved" << std::endl;
+	else
+		for (int i = 0; i < *results_size; i++)
+			std::cout << i <<")\n" << results[i] << std::endl;
 }
 
 
 
 void Menu::edit()
+/* Purpose: Edits the review and rating for a Website that matches a user specified topic and address
+ * Parameters: None
+ * Return: None
+ */
 {
 	char queryTopic[MAX_SIZE];
 	char queryAddress[MAX_SIZE];
@@ -223,6 +286,10 @@ void Menu::edit()
 
 
 void Menu::remove()
+/* Purpose: Removes all websites with a rating of 1 from the table. Prints the amount of websites that were removed.
+ * Parameters: None
+ * Return: None
+ */
 {
 	std::cout << table->remove() << " websites with a rating of 1 were removed from the table." << std::endl;
 }
@@ -230,6 +297,10 @@ void Menu::remove()
 
 
 void Menu::viewChainLengths()
+/* Purpose: Prints the length of all the chains in the hash table to monitor hashing performance
+ * Parameters: None
+ * Return: None
+ */
 {
 	table->chainLengths();
 }

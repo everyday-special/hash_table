@@ -10,7 +10,25 @@
 #include <ostream>
 
 class Website
-/* Clas representing an website information
+/* Class representing an website information
+ * Class has two friend classes:
+ * 	-LinkedList
+ * 	-Table
+ * Class has 5 private data members:
+ * 	-topic - cstring containing the website topic
+ * 	-address - cstring containing the website address
+ * 	-summary - cstring containing the website summary
+ * 	-review - cstring containing the website review
+ * 	-rating - int from 1 to 5 representing the websites rating (out of 5)
+ * Class has 8 public member and friend functions
+ * 	-Default constructor
+ * 	-Overloaded constructor
+ * 	-Copy constructor
+ * 	-Default destructor
+ * 	-Overloaded assignment operator
+ * 	-setReview() - setter for review attribute
+ * 	-setRating() - setter for rating attribute
+ * 	-Overloaded insertion operator
  */
 {
 	public:
@@ -19,11 +37,6 @@ class Website
 		Website(const Website& srcWebstire);
 		~Website();
 		void operator=(const Website& srcWebsite);
-		//void getTopic(char result[]);
-		//void getAddress(char result[]);
-		//void getSummary(char result[]);
-		//void getReview(char result[]);
-		//int getRating();
 		void setReview(const char newReview[]);
 		void setRating(const int& newRating);
 		

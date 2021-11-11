@@ -8,6 +8,10 @@
 #include "linkedlist.h"
 
 LinkedList::LinkedList()
+/* Purpose: Default Constructor for LinkedList object
+ * Parameters: None
+ * Return: None
+ */
 {
 	head = nullptr;
 	size = new int(0);
@@ -16,8 +20,12 @@ LinkedList::LinkedList()
 
 
 LinkedList::~LinkedList()
+/* Purpose: Default destructor for LinkedList Object
+ * Parameters: None
+ * Return: None
+ */
 {
-	Node * temp;
+	Node * temp; // Stores temporary reference to head node before deletion
 
 	while (head)
 	{
@@ -34,8 +42,12 @@ LinkedList::~LinkedList()
 
 
 void LinkedList::add(Website & newWebsite)
+/* Purpose: adds a new website to the front LinkedList
+ * Parameters: Website & newWebsite - website object to add to the linked list
+ * Return: None
+ */
 {
-	Node * newNode = new Node(newWebsite);
+	Node * newNode = new Node(newWebsite); // new Node being added to the list
 	if (head)
 	{
 		newNode->next = head;
@@ -49,6 +61,10 @@ void LinkedList::add(Website & newWebsite)
 
 
 int LinkedList::getSize()
+/* Purpose: Gets the current size of the linkedlist
+ * Parameters: None
+ * Return: int - current size of the linkedlist
+ */
 {
 	return *(this->size);
 }
@@ -56,6 +72,10 @@ int LinkedList::getSize()
 
 
 bool LinkedList::displayAll()
+/* Purpose: Displays all the data in the linked list
+ * Parameters: None
+ * Return: bool - true if list is non-empty, false if it is empty
+ */
 {
 	if ((*size) > 0)
 	{
@@ -69,10 +89,14 @@ bool LinkedList::displayAll()
 
 
 void LinkedList::displayAllRecursive(Node *& curr)
+/* Purpose: recursive helper function for displaying all nodes
+ * Parameters: Node *& curr - reference to the current node in the list
+ * Return: None
+ */
 {
 	if (curr)
 	{
-		std::cout << *curr << std::endl;
+		std::cout << '\n' << *curr << std::endl;
 		displayAllRecursive(curr->next);
 	}
 }
@@ -80,10 +104,14 @@ void LinkedList::displayAllRecursive(Node *& curr)
 
 
 int LinkedList::removeByRating(const int& rating)
+/* Purpose: removes all Websites in the list with a specified rating or lower
+ * Parameters: const int& rating - cutoff rating for removal
+ * Return: int - number of websites removed from the list
+ */
 {
-	int original = *size;
-	Node * curr = head;
-	Node * prev = nullptr;
+	int original = *size; // Stores original size of list before removal
+	Node * curr = head; // reference to current node being checked
+	Node * prev = nullptr; // reference to previous node checked
 
 	while (curr)
 	{
@@ -116,6 +144,10 @@ int LinkedList::removeByRating(const int& rating)
 
 
 bool LinkedList::displayAllByTopic(const char query[])
+/* Purpose: Displays all websites in the list that match a specified topic
+ * Parameters: const char query[] - topic to search the list by
+ * Return: bool - true if list is non-empty and website matches were found, false if not
+ */
 {
 	if ((*size) > 0)
        	{
@@ -129,11 +161,17 @@ bool LinkedList::displayAllByTopic(const char query[])
 
 
 void LinkedList::displayAllByTopicRecursive(Node *& curr, const char query[])
+/* Purpose: recursive helper function for displaying all nodes by topic
+ * Parameters:
+ * 	-Node *& curr - reference to the current node
+ * 	-const char query[] - topic to search the list by
+ * Return: None
+ */
 {
 	if (curr)
 	{
 		if (strcmp((*(curr->data)).topic, query) == 0)
-			std::cout << *curr << std::endl;
+			std::cout << '\n' << *curr << std::endl;
 		displayAllByTopicRecursive(curr->next, query);
 	}
 }
@@ -141,9 +179,16 @@ void LinkedList::displayAllByTopicRecursive(Node *& curr, const char query[])
 
 
 bool LinkedList::retrieve(const char query[], Website matches[], int & num_found)
+/* Purpose: retrieves all websites matching the topic and stores them in an array which is passed in by reference
+ * Parameters:
+ * 	-const char query[] - topic to search the table by
+ * 	-Website matches[] - array of websites to store the matches in. Passed in by reference
+ * 	-int & num_found - number matches found. Passed in by reference.
+ * Return: bool - true if matches were found, false if not
+ */
 {
-	Node * curr = head;
-	bool found = false;
+	Node * curr = head; // reference to current node being checked
+	bool found = false; // stores whether or not a match has been found
 
 	while (curr)
 	{
@@ -160,8 +205,15 @@ bool LinkedList::retrieve(const char query[], Website matches[], int & num_found
 
 
 bool LinkedList::edit(const char query[], const char newReview[], const int& newRating)
+/* Purpose: edits the reivew and rating for a website that matches the given address
+ * Parameters:
+ * 	-const char query[] - address to search the linkedlist by
+ *	-const char newReview[] - new review for the website
+ *	-const int& newRating - new rating for the website (1 to 5)
+ * Return: bool - true if a match was found and modified, false if not
+ */
 {
-	Node * curr = head;
+	Node * curr = head; // reference to current node being checked
 
 	while (curr)
 	{

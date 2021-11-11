@@ -8,6 +8,10 @@
 #include "website.h"
 
 Website::Website()
+/* Default constructor
+ * Parameters: None
+ * Return: None
+ */
 {
 	topic = nullptr;
 	address = nullptr;
@@ -123,39 +127,6 @@ void Website::operator=(const Website& srcWebsite)
         strcpy(this->review, srcWebsite.review);
         this->rating = new int((*srcWebsite.rating));
 }
-
-
-
-/*void Website::getTopic(char result[])
-* Accessor method for topic attribute
- * Parameters: char result[] - topic attribute is copied into this cstring
- * Return: None
- *
-{
-	strcpy(result, this->topic);
-}
-
-
-
-void Website::getAddress(char result[])
-* Accessor method for address attribute
- * Parameters: char result[] - address attribute is copied into the cstring
- * Return: None
- *
-{
-	strcpy(result, this->address);
-}*/
-
-
-
-/*int Website::getRating()
-* Accessor method for rating attribute
- * Parameters: None
- * Return: int - integer value of rating attribute
- *
-{
-	return *(this->rating);
-}*/
 
 
 
