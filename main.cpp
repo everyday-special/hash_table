@@ -1,6 +1,5 @@
 /* Purpose: Definition of main()
  * Matthew Lidell
- * CS260 Project 3
  * 11/7/21
  * file: main.cpp
  */

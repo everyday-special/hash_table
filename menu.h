@@ -1,6 +1,5 @@
 /* Purpose: Defines the menu class
  * Author: Matthew Lidell
- * CS260 Project 3
  * Date: 11/7/21
  * file: menu.h
  */

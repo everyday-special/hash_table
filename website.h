@@ -1,6 +1,4 @@
 /* Matthew Lidell
- * CS 260
- * Project 3
  * 11/3/21
  * File: website.h
  * Purpose: Defines the website class

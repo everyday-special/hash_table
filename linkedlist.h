@@ -1,6 +1,4 @@
 /* Matthew Lidell
- * CS 260
- * Project 3
  * 11/3/21
  * File: linkedlist.h
  * Purpose: Defintion for linked list class

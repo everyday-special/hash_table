@@ -1,6 +1,4 @@
 /* Matthew Lidell
- * Cs 260
- * Project 3
  * 11/3/21
  * File: linkedlist.cpp
  * Purpose: Defintion of the linedlist class member functions

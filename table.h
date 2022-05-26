@@ -1,6 +1,4 @@
 /* Matthew Lidell
- * CS 260
- * Project 3
  * 11/7/21
  * File: table.h
  * Purpose: Definition for linked list class

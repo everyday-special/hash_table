@@ -1,6 +1,4 @@
 /* Matthew Lidell
- * CS 260
- * Project 3
  * 11/3/21
  * File: website.cpp
  * Purpose: Defines website class member and friend functions
